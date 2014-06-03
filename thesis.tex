@@ -9,9 +9,9 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
 %scrartcl is used when there are no chapters ( for smaller paper)
 
 
-\usepackage[latin1]{inputenc} % enables unicode support for windows
-\usepackage[english]{babel} % sets up new english typography reform
-\usepackage{csquotes} % babel demands it
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel} % sets up english hyphenation
+\usepackage{csquotes} % for language-dependent quotes in biblatex
 \usepackage[unicode=true]{hyperref} % enables use of metadata for pdfs and hyperlinks within a document
 \usepackage[natbib,maxnames=2,maxbibnames=100,style=authoryear-comp,uniquename=full,firstinits,doi=false,backend=biber,backref,hyperref]{biblatex} % advanced bibliography support
 \usepackage[usenames,dvipsnames,hyperref]{xcolor} % enables more advanced color support for hyperref
@@ -20,8 +20,9 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     linkcolor=red!35!black,    %definition of the link color
     citecolor=green!35!black,  %definition of the cite color
     urlcolor=magenta!35!black, %definition of the url color
-    pdfauthor=Tobias Hartmann, % Optional: Specify the author of the pdf
-    pdftitle= Basic Latex template}      % Optional: Specify the title within the pdf
+    %pdfauthor=, % Optional: Specify the author of the pdf
+    %pdftitle=   % Optional: Specify the title within the pdf
+}      
 \usepackage{subfiles} %This package is used for subfiles
 \usepackage{tabu}     % provides advanced tables
 \usepackage{array,multirow}
@@ -43,7 +44,7 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
 \usepackage[ruled,vlined]{algorithm2e} %algorithm package
 \linespread{1.1} % Definition of the linespread
 \usepackage[tbtags]{mathtools}
-\DeclareMathOperator*{\argmax}{arg\,max} %argmax command
+\DeclareMathOperator*{\somefunc}{somefunc}
 
 %tikz helps to draw nice pictures with a lot of effort for advanced users
 \usetikzlibrary{positioning,shapes,shadows,arrows, backgrounds}
@@ -150,19 +151,20 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
 
     \chapter*{Abstract}
     \thispagestyle{empty}
-    Describe your approach and results within the abstract.
+    Describe your approach and results shortly in the abstract.
+    The abstract should really already tell the reader what to expect.
+    Do not try to  build suspension, this is not a Holywood  movie, it is a
+    (your!) scientific thesis.  The abstract  is usually the last thing you
+    write, even if it is the first thing you read here.
 
 
     \newpage
     \pagenumbering{roman}
-    \setcounter{page}{1}
     \tableofcontents
     \listoffigures
     \listofalgorithms
 
     \newpage
-    %\setcounter{page}{1}
-    %\pagenumbering{arabic}
     \mainmatter
     \subfile{content/introduction}
 
@@ -172,12 +174,12 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
 
     Use the ``we'' form, even when  you're writing alone.  Imagine it to be
     the reader and  you, who are going through the  text together.  It gets
-    you closer to your reader!
+    you closer to your audience.
 
     \section{Quotes, and Emphasis}
     Note that double  "quotes" are not typeset  correctly.  English quotes 
-    should  look  like ``this'',  while  German  quotes are  typeset  like 
-    "`this"'.   Note  the difference.   Some  editors  insert the  correct 
+    should look like ``this'', while  German quotes are typeset like \glqq 
+    this\grqq.   Note the  difference.   Some editors  insert the  correct 
     quotes automatically for you.                                          
 
     Use  emphasis  sparingly.  It  clutters  the  text.  In  general,  use 
@@ -192,10 +194,10 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     means that you should have something to say when you write something.
     If you don't know what you want to say, think again, \emph{then} write.
 
-    Don't use  colloquial expressions.  In  particular, do not use  any of 
-    the short  forms \emph{don't,  aren't, isn't, you're,  we're, \ldots}. 
-    Do not\footnote{this is better!} use ellipsis (\ldots) in the text, as 
-    it looks like you're trailing off.                                     
+    Don't use colloquial expressions.  In particular, don't use any of the 
+    short forms  \emph{don't, aren't,  isn't, you're, we're,  \ldots}.  Do 
+    not\footnote{this is much better!} use  ellipsis (\ldots) in the text, 
+    as it looks like you're trailing off.                                  
 
     \chapter{Comments on Writing in LaTeX}
 
@@ -209,16 +211,19 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
 
     If you want to toy  with margins nevertheless, consider this: When you 
     open  your  double-sided  printed  thesis, the  white  region  in  the 
-    left/right and center region should  have equal widths.  The margin on 
-    the  bottom  should be  larger  than  on  the  top.  These  rules  are 
-    automatically  used  by  the KomaScript  classes  (scrartcl,  scrbook, 
-    scrrprt).                                                              
+    left/right  and  center  region  should have  equal  widths.   Outside 
+    margins are larger than the margin inside.  Consequentially, on a left 
+    page, left  margins are larger  than right (i.e. center)  margins, and 
+    on  a  right page,  right  margins  are  larger  than the  left  (i.e. 
+    center) ones. The  margin on the bottom  should be larger than  on the 
+    top.  These  rules are  automatically used  by the  KomaScript classes 
+    (scrartcl, scrbook, scrrprt).  Do not meddle with them.
     
     To   meddle  with   the   margins,   use  the   DIV   option  of   the 
     \verb+documentclass+  command.    Larger  values  result   in  smaller 
     margins.  If you  want to bind your thesis, make  sure to include some 
-    space  for it  using  BCOR.  It  allows a  correct  typography of  the 
-    document.  Never, ever, use the \verb+geometry+ package.
+    space for it using BCOR.  Ask the  print shop how much to use for your 
+    specific binding needs.  Never, ever, use the \verb+geometry+ package. 
 
     \section{Front, Main and Back Matters}
 
@@ -232,14 +237,18 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     \section{Paragraphs}
     \label{sec:paras}
 
-    Paragraphs  are  separated  by  empty  lines.   Never  use  the  double
-    backslash for this purpose.
+    Paragraphs are separated  by empty lines in the  \LaTeX{} code.  Never 
+    use  the double  backslash for  this purpose.   \LaTeX{} inserts  line 
+    breaks  preferably between  paragraphs.  A  double backslash  lets you 
+    stay in the  same paragraph, so \LaTeX{} does not  know where it would 
+    be good  to insert page  breaks, figures, tables, algorithms,  and the 
+    like.                                                                  
 
     Many people find  the indentation of the first line  in paragraph odd. 
     Again, look into a favorite book  or newspaper of yours and you'll see 
-    that this is used everywhere.
-
-
+    that this is used everywhere.  Note that it allows you on the top of a 
+    new page to  see whether the line  is the first of a  new paragraph or 
+    the continuation of an old paragraph. 
 
     \section{Math}
 
@@ -251,15 +260,39 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     \end{align}
     is typically taught at school.
 
-    Note that  as in \cref{sec:paras},  before and after a  formula, empty 
-    lines will add  space and indentation.  So  if a formula is  part of a 
-    paragraph, do not add empty lines around it. 
+    Other random notes:
 
+    \begin{itemize}
+        \item
+    Note that  as in \cref{sec:paras},  before and after a  formula, empty 
+    lines will  add space  and indentation, and  possibly page  breaks, or 
+    figures.  So  if a formula  is part of a  paragraph, do not  add empty 
+    lines around it in the code.                                           
+
+        \item
     Number all equations.  It makes it  easier to refer to them for others,
     even if you do not refer to them in your own text.
 
+        \item
     While we're at  it, do not use the  \verb+equation+ or \verb+eqnarray+ 
     environments, use \verb+align+ instead.
+
+        \item
+    Take care to always put all  math in the math-environment, for example 
+    the  variable $x$.   Note  that  it is  typeset  differently from  the 
+    letter~x.
+
+        \item
+    Use  single-letter  names  for  variables   in  math  (this  is  not  a
+    programming language).   Function names  may have  multiple characters,
+    such as $\tanh(x)$.  Note that they are not typeset in italics.  
+    They  usually have  their own  commands, and  you can  define your  own
+    functions, such as  $\somefunc(x)$.  If you don't do  this, the kerning
+    will  be broken,  since \LaTeX{}  assumes that  you're multiplying  the
+    variables  $s$, $o$,  $m$, $e$,  $f$, $u$,  $n$, and  $c$ and  typesets
+    accordingly.
+
+    \end{itemize}
 
     \section{Referencing}
     Use  the \verb+cleverref+  package to  refer  to other  places in  the 
@@ -303,30 +336,6 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
         \item foo bar baz
     \end{enumerate}
 
-
-    \section{Figures}
-    You should  allow \LaTeX{} to place  the figures where it  wants.  The 
-    same  goes  for  tables.   This  is  called  a  \verb+float+,  as  the 
-    figure/table floats around.   Look in a well-typeset  book, and you'll 
-    notice that figures aren't placed randomly in the text, they're rather 
-    always  on the  top  of  the page  if  at  all possible. \LaTeX{}  has 
-    options to  let figures float to  \emph{top} (\verb+t+), \emph{bottom} 
-    (\verb+b+),   \emph{page  of   floats}   (\verb+p+)  and   \emph{here} 
-    (\verb+h+).  The  default is \verb+tbp+ is  ok for most cases,  in any 
-    case, never use \verb+h+.  You can use the FloatBarrier command if you 
-    want to make sure that a figure is within a specific section.          
-
-    All figures have  a caption from which you can  understand most of the 
-    figure content  and its significance.   They are also  referenced from 
-    the main text (e.g., see \cref{fig:cats}).  Do not force linebreaks in 
-    captions.  Do not deviate from these rules, they are strict.           
-
-    Figures  should  provide a  short  name  for  every figure  in  square 
-    brackets: $[$~$]$. If  you do not define a short  name, the whole text 
-    of the caption will be displayed, which is usually too long.
-    
-    Note that \cref{fig:cats} also shows how to use subfigures.
-
     \begin{figure}
         \centering
         \begin{subfigure}[b]{0.3\textwidth}
@@ -352,7 +361,30 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     \end{figure}
 
 
-    \FloatBarrier
+    \section{Figures}
+    You should  allow \LaTeX{} to place  the figures where it  wants.  The 
+    same  goes  for  tables.   This  is  called  a  \verb+float+,  as  the 
+    figure/table floats around.   Look in a well-typeset  book, and you'll 
+    notice that figures aren't placed randomly in the text, they're rather 
+    always  on the  top  of  the page  if  at  all possible. \LaTeX{}  has 
+    options to  let figures float to  \emph{top} (\verb+t+), \emph{bottom} 
+    (\verb+b+),   \emph{page  of   floats}   (\verb+p+)  and   \emph{here} 
+    (\verb+h+).  The  default is \verb+tbp+ is  ok for most cases,  in any 
+    case, never use \verb+h+.  You can use the FloatBarrier command if you 
+    want to make sure that a figure is within a specific section.          
+
+    All figures have  a caption from which you can  understand most of the 
+    figure content  and its significance.   They are also  referenced from 
+    the main text (e.g., see \cref{fig:cats}).  Do not force linebreaks in 
+    captions.  Do not deviate from these rules, they are strict.           
+
+    Figures  should  provide a  short  name  for  every figure  in  square 
+    brackets: $[$~$]$. If  you do not define a short  name, the whole text 
+    of the caption will be displayed, which is usually too long.
+    
+    Note that \cref{fig:cats} also shows how to use subfigures.
+
+
 
     \section{Tables}
     Never  use vertical  lines in  tables.  See  the documentation  of the 
@@ -362,25 +394,21 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     A basic  example, taken  from the booktabs  documentation, is  given in
     \cref{tab::ex}.
 
-    Note  that tables  generally have  their caption  above the  table, not
-    below (as in figures).
-
     \begin{table}
         \centering
-        \caption[Table Example]{A basic example from the booktabs package.}
-        \begin{tabular}{lrr} 
+        \begin{tabular}{@{}lrr@{}} 
             \toprule
             \multicolumn{2}{c}{Education}\\ \cmidrule{1-2}
-            Subject & Duration & Income (\euro)\\ 
+            Major & Duration & Income (\euro)\\ 
             \midrule 
-            Info & 2 & 12,75 \\ \addlinespace
+            CompSci & 2 & 12,75 \\ \addlinespace
             MST & 6 & 8,20 \\ \addlinespace
             VWL & 14 & 10,00\\ 
             \bottomrule
         \end{tabular}
+        \caption[Table Example]{A basic example from the booktabs package.}
         \label{tab::ex}
     \end{table}
-    \FloatBarrier
 
     \subsection{The tabu package}
     The tabu package provides some useful tools for advanced tables.
@@ -391,7 +419,7 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     We recommend the \verb+algorithm2e+ package.
     In \cref{alg:exp} a simple example from the algorithm2e documentation is given.
 
-    \begin{algorithm}[H]
+    \begin{algorithm}[t]
         \SetAlgoLined
         \KwData{this text}
         \KwResult{how to write algorithm with \LaTeX2e }
@@ -408,7 +436,6 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
         \caption{How to write algorithms (Small example from the algorithm2e documentation)}
         \label{alg:exp}
     \end{algorithm}
-    \FloatBarrier
 
     \section{Compiling The Document}
     \LaTeX{}  is  a bit  archaic  to  work  with,  since with  every  pass 
@@ -426,14 +453,22 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
               to get the typesetting right.
     \end{enumerate}
 
-    If you know what you're doing you can get away with less.
+    If  you know  what  you're doing  you  can get  away  with less.   Some
+    programs parse the  output of \LaTeX{} to  determine whether additional
+    passes are necessary.  Most GUI programs fall in this category, as do
+    \verb+rubber+ and \verb+latexmk+.
 
     \backmatter
+
+    \chapter{This is an Appendix}
+    Note that it has  a letter as a chapter ``number'',  since it is behind
+    the backmatter command.
+
+    \FloatBarrier
 
     \begin{singlespacing}
         \printbibliography
     \end{singlespacing}
-    \FloatBarrier
 
 \end{document}
 
