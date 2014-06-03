@@ -1,0 +1,439 @@
+\documentclass[12pt, %font size
+a4paper, %paper type
+twoside, % two sided printing
+openright, % start new chapter on right side only ( inserts blank pages )
+abstract=on, % Use an abstract
+DIV=11,      % This parameter organizes the borders (detailed explanation at http://texdoc.net/texmf-dist/doc/latex/koma-script/scrguide.pdf
+BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued, hard cover..)
+%scrreprt is used for larger texts with chapters (Master or Bachelor Thesis)
+%scrartcl is used when there are no chapters ( for smaller paper)
+
+
+\usepackage[latin1]{inputenc} % enables unicode support for windows
+\usepackage[english]{babel} % sets up new english typography reform
+\usepackage{csquotes} % babel demands it
+\usepackage[unicode=true]{hyperref} % enables use of metadata for pdfs and hyperlinks within a document
+\usepackage[natbib,maxnames=2,maxbibnames=100,style=authoryear-comp,uniquename=full,firstinits,doi=false,backend=biber,backref,hyperref]{biblatex} % advanced bibliography support
+\usepackage[usenames,dvipsnames,hyperref]{xcolor} % enables more advanced color support for hyperref
+\hypersetup{colorlinks=true, %flag for prints
+    hidelinks,  % this option would hide links for the print version of your thesis
+    linkcolor=red!35!black,    %definition of the link color
+    citecolor=green!35!black,  %definition of the cite color
+    urlcolor=magenta!35!black, %definition of the url color
+    pdfauthor=Tobias Hartmann, % Optional: Specify the author of the pdf
+    pdftitle= Basic Latex template}      % Optional: Specify the title within the pdf
+\usepackage{subfiles} %This package is used for subfiles
+\usepackage{tabu}     % provides advanced tables
+\usepackage{array,multirow}
+\bibliography{thesis.bib}% Include all the bibliography files
+\usepackage{booktabs} % enables reference bookstyle tables
+\usepackage[format=plain, labelfont=bf]{caption}
+\usepackage[capitalize,noabbrev]{cleveref}
+\usepackage{subcaption} % enables use multiple figures in a figure
+\captionsetup{compatibility=false}
+\usepackage{eurosym} %includes the euro symbol 
+\usepackage{enumitem} % allows customization of enumeration and itemize environment
+\usepackage{graphicx} % enables loading of graphics
+\usepackage{tikz} % drawing vector graphics in latex
+%\usepackage{parskip} %alternatively parskip replaces paragraph indentation by increased in-betweeen-paragraph linespacing 
+\usepackage{setspace} % helps setup line spacing
+%\onehalfspacing % increases linespacing to one and half
+\usepackage{placeins} % provides FloatBarrier
+%\usepackage[miktex]{gnuplottex} % gnuplot within latex. May be obsolete with pylab.
+\usepackage[ruled,vlined]{algorithm2e} %algorithm package
+\linespread{1.1} % Definition of the linespread
+\usepackage[tbtags]{mathtools}
+\DeclareMathOperator*{\argmax}{arg\,max} %argmax command
+
+%tikz helps to draw nice pictures with a lot of effort for advanced users
+\usetikzlibrary{positioning,shapes,shadows,arrows, backgrounds}
+\usepackage{verbatim}
+\usepackage{tikz-3dplot}
+
+
+%some definitions for the cref package
+\crefname{algocf}{Algorithm}{Algorithms}
+\crefname{table}{Table}{Tables}
+\crefname{chapter}{Chapter}{Chapters}
+\crefname{equation}{Equation}{Equations}
+\crefname{section}{Section}{Sections}
+
+
+\tikzset{
+    tri/.style={
+        draw,
+        shape border rotate=90,
+        isosceles triangle,
+        isosceles triangle apex angle=60,
+        node distance=1cm,
+        minimum height=4em
+    }
+}
+
+
+
+\begin{document}
+    \frontmatter
+
+    \begin{titlepage}
+        \begin{center}
+
+            % Upper part of the page. The '~' is needed because \\
+            % only works if a paragraph has started.
+            \includegraphics{img/logo2}\\[1cm]
+
+            \textsc{\LARGE Rheinische\\[5mm] Friedrich-Wilhelms-Universität Bonn}\\[1.5cm]
+
+            \textsc{\Large Master thesis}\\[1.5cm]
+
+            % Title
+            { \Large \bfseries Basic \LaTeX \, Template }\\[1.4cm]
+
+            % Author and supervisor
+            \begin{minipage}[t]{0.4\textwidth}
+                \begin{flushleft} \large
+                    \emph{Author:}\\
+                    Max \textsc{Mustermann}
+                \end{flushleft}
+            \end{minipage}
+            \begin{minipage}[t]{0.5\textwidth}
+                \begin{flushright} \large
+                    \emph{First Examiner:} \\
+                    Prof.~Dr.~John \textsc{Doe} \\[0.5cm]
+                    \emph{Second Examiner:} \\
+                    Prof.~Dr.~John~\textsc{Doe} \\[0.5cm]
+
+                    \emph{Advisor:} \\
+                    John \textsc{Doe} \\[0.5cm]
+                        %\emph{Abteilung:} \\
+                        %Autonome Intelligente Systeme
+                \end{flushright}
+            \end{minipage}
+
+            \vfill
+
+            % Bottom of the page
+            {\large Submitted:\hspace{1cm} \today}
+
+        \end{center}
+    \end{titlepage}
+
+    \pagestyle{headings}  % switches on printing of running heads
+    \title{Basic \LaTeX \, Template}
+    %\subtitle{Master thesis}
+    \author{Tobias Hartmann\\ \begin{minipage}{8cm}\centering \small Friedrich-Wilhelms-Universität Bonn\\ \small (group)\end{minipage}}
+
+    \vspace{4cm}
+
+    \cleardoublepage
+    \thispagestyle{empty}
+    {\noindent%
+        \huge{\textbf{\textsf{Declaration of Authorship}}}
+    }
+    \vspace{2cm}
+    \begin{flushleft}
+        \noindent%
+        I declare that the work presented here is original and the result of my own investigations.
+        Formulations and ideas taken from other sources are cited as such.
+
+        It has not been submitted, either in part or whole, for a degree at this or any other university.
+    \end{flushleft}
+
+    \vspace{8cm}
+    \noindent%
+    \rule[1em]{8em}{0.5pt}  \hfill \rule[1em]{8em}{0.5pt}\\ % This prints a line to write the date
+    Location, Date \hfill Signature\\
+
+
+    \cleardoublepage
+
+
+    \chapter*{Abstract}
+    \thispagestyle{empty}
+    Describe your approach and results within the abstract.
+
+
+    \newpage
+    \pagenumbering{roman}
+    \setcounter{page}{1}
+    \tableofcontents
+    \listoffigures
+    \listofalgorithms
+
+    \newpage
+    %\setcounter{page}{1}
+    %\pagenumbering{arabic}
+    \mainmatter
+    \subfile{content/introduction}
+
+    \chapter{Language}
+
+    \section{I or We?}
+
+    Use the ``we'' form, even when  you're writing alone.  Imagine it to be
+    the reader and  you, who are going through the  text together.  It gets
+    you closer to your reader!
+
+    \section{Quotes, and Emphasis}
+    Note that double  "quotes" are not typeset  correctly.  English quotes 
+    should  look  like ``this'',  while  German  quotes are  typeset  like 
+    "`this"'.   Note  the difference.   Some  editors  insert the  correct 
+    quotes automatically for you.                                          
+
+    Use  emphasis  sparingly.  It  clutters  the  text.  In  general,  use 
+    \emph{italics}, which is the one standing out the least.  In captions, 
+    it is sometimes useful to use  \textbf{bold} for the signal words left 
+    and right, top and bottom: There, you want them to pop out.
+
+    \section{Line Noise and Colloquial Expressions}
+
+    Do  not use  fill words  which do  not carry  meaning.  Try  to be  as 
+    specific as  possible.  This does  not mean  as short as  possible, it 
+    means that you should have something to say when you write something.
+    If you don't know what you want to say, think again, \emph{then} write.
+
+    Don't use  colloquial expressions.  In  particular, do not use  any of 
+    the short  forms \emph{don't,  aren't, isn't, you're,  we're, \ldots}. 
+    Do not\footnote{this is better!} use ellipsis (\ldots) in the text, as 
+    it looks like you're trailing off.                                     
+
+    \chapter{Comments on Writing in LaTeX}
+
+    Lots of people complain about \LaTeX{} standard margins.  Typographers 
+    say: You shouldn't have  more than about 70 characters  per line (when 
+    using single  spacing).  Otherwise your  eyes have trouble  jumping to 
+    the  beginning  of the  next  line.   This  limits your  column  width 
+    severely, unless you  use a big font.  A thin  column width results in 
+    large margins.  This is (aside  from portability) the reason why books 
+    are smaller than A4 paper.
+
+    If you want to toy  with margins nevertheless, consider this: When you 
+    open  your  double-sided  printed  thesis, the  white  region  in  the 
+    left/right and center region should  have equal widths.  The margin on 
+    the  bottom  should be  larger  than  on  the  top.  These  rules  are 
+    automatically  used  by  the KomaScript  classes  (scrartcl,  scrbook, 
+    scrrprt).                                                              
+    
+    To   meddle  with   the   margins,   use  the   DIV   option  of   the 
+    \verb+documentclass+  command.    Larger  values  result   in  smaller 
+    margins.  If you  want to bind your thesis, make  sure to include some 
+    space  for it  using  BCOR.  It  allows a  correct  typography of  the 
+    document.  Never, ever, use the \verb+geometry+ package.
+
+    \section{Front, Main and Back Matters}
+
+    Titlepage, lists of figures, table  of contents page etc. are numbered 
+    in  roman letters.   The introduction  should start  with page  $1$ in 
+    arabic  numerals.   The document  class  \verb+scrbook+  does this  by 
+    default,  when \textbackslash  frontmatter, \textbackslash  mainmatter 
+    and \textbackslash backmatter are placed properly.                     
+
+
+    \section{Paragraphs}
+    \label{sec:paras}
+
+    Paragraphs  are  separated  by  empty  lines.   Never  use  the  double
+    backslash for this purpose.
+
+    Many people find  the indentation of the first line  in paragraph odd. 
+    Again, look into a favorite book  or newspaper of yours and you'll see 
+    that this is used everywhere.
+
+
+
+    \section{Math}
+
+    Formulas are part of  the text, try to use them  like other objects and
+    be sure to include punctuation to keep the text flowing.  For example,
+    the pythagorean theorem,
+    \begin{align}
+        a^2 + b^2 = c^2,
+    \end{align}
+    is typically taught at school.
+
+    Note that  as in \cref{sec:paras},  before and after a  formula, empty 
+    lines will add  space and indentation.  So  if a formula is  part of a 
+    paragraph, do not add empty lines around it. 
+
+    Number all equations.  It makes it  easier to refer to them for others,
+    even if you do not refer to them in your own text.
+
+    While we're at  it, do not use the  \verb+equation+ or \verb+eqnarray+ 
+    environments, use \verb+align+ instead.
+
+    \section{Referencing}
+    Use  the \verb+cleverref+  package to  refer  to other  places in  the 
+    document,  e.g.  \cref{chap:Introduction}.    The  package  allows  to 
+    specify the reference style globally.  Therefore, it helps to refer in 
+    a consistent  way.  Otherwise you  may quickly have different  ways of 
+    referencing,   e.g.  \emph{Figure},   \emph{figure},  \emph{Fig.}   and
+    \emph{fig.}.   The package  also ensures  that there  is no  linebreak 
+    before the number of the figure/chapter etc.                           
+
+    \section{Citations}
+    There are two ways to cite, which depends on whether the authors are an
+    active part of your sentence:
+    \begin{itemize}
+        \item \citet{muster} showed that ...
+        \item This is currently a hot research topic \citep{muster}
+    \end{itemize}
+    This distinction  is even more important  when you use a  numeric style
+    for referencing.
+
+    In  your bibliography,  you should  define common  strings, using  the 
+    \verb|@string| syntax.  Otherwise you might  quickly end up with a lot 
+    of different  names for  the same conference,  which is  confusing and 
+    inconsistent.  (Please have a look at the bibliography file.)          
+
+    \section{Enumerations}
+
+    Short enumerations look ugly in  standard \LaTeX{}, since they include 
+    too much  space between the  items.  A ``normal'' enumerate  list with 
+    very short paragraphs:                                                 
+    \begin{enumerate}
+        \item foo bar baz
+        \item foo bar baz
+        \item foo bar baz
+    \end{enumerate}
+
+    A list using enumitem to compress the inter item spaces, looks much better for short items:
+    \begin{enumerate}[noitemsep]
+        \item foo bar baz
+        \item foo bar baz
+        \item foo bar baz
+    \end{enumerate}
+
+
+    \section{Figures}
+    You should  allow \LaTeX{} to place  the figures where it  wants.  The 
+    same  goes  for  tables.   This  is  called  a  \verb+float+,  as  the 
+    figure/table floats around.   Look in a well-typeset  book, and you'll 
+    notice that figures aren't placed randomly in the text, they're rather 
+    always  on the  top  of  the page  if  at  all possible. \LaTeX{}  has 
+    options to  let figures float to  \emph{top} (\verb+t+), \emph{bottom} 
+    (\verb+b+),   \emph{page  of   floats}   (\verb+p+)  and   \emph{here} 
+    (\verb+h+).  The  default is \verb+tbp+ is  ok for most cases,  in any 
+    case, never use \verb+h+.  You can use the FloatBarrier command if you 
+    want to make sure that a figure is within a specific section.          
+
+    All figures have  a caption from which you can  understand most of the 
+    figure content  and its significance.   They are also  referenced from 
+    the main text (e.g., see \cref{fig:cats}).  Do not force linebreaks in 
+    captions.  Do not deviate from these rules, they are strict.           
+
+    Figures  should  provide a  short  name  for  every figure  in  square 
+    brackets: $[$~$]$. If  you do not define a short  name, the whole text 
+    of the caption will be displayed, which is usually too long.
+    
+    Note that \cref{fig:cats} also shows how to use subfigures.
+
+    \begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth]{img/cat.jpeg}
+            \caption{Nyan cat}
+            \label{fig:cat1}
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+        %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth]{img/cat.jpeg}
+            \caption{Nyan cat}
+            \label{fig:cat2} 
+        \end{subfigure}
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+        %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.3\textwidth}
+            \includegraphics[width=\textwidth]{img/cat.jpeg}
+            \caption{Nyan cat}
+            \label{fig:cat3}  
+        \end{subfigure}
+        \caption[Nyan cats]{Pictures of Nyan cats}\label{fig:cats}
+    \end{figure}
+
+
+    \FloatBarrier
+
+    \section{Tables}
+    Never  use vertical  lines in  tables.  See  the documentation  of the 
+    booktabs package for an explanation,  or look in a favorite scientific 
+    book/magazine to understand that this is a commonplace rule.
+
+    A basic  example, taken  from the booktabs  documentation, is  given in
+    \cref{tab::ex}.
+
+    Note  that tables  generally have  their caption  above the  table, not
+    below (as in figures).
+
+    \begin{table}
+        \centering
+        \caption[Table Example]{A basic example from the booktabs package.}
+        \begin{tabular}{lrr} 
+            \toprule
+            \multicolumn{2}{c}{Education}\\ \cmidrule{1-2}
+            Subject & Duration & Income (\euro)\\ 
+            \midrule 
+            Info & 2 & 12,75 \\ \addlinespace
+            MST & 6 & 8,20 \\ \addlinespace
+            VWL & 14 & 10,00\\ 
+            \bottomrule
+        \end{tabular}
+        \label{tab::ex}
+    \end{table}
+    \FloatBarrier
+
+    \subsection{The tabu package}
+    The tabu package provides some useful tools for advanced tables.
+
+
+    \section{Algorithms}
+    There are several packages to typeset algorithms.
+    We recommend the \verb+algorithm2e+ package.
+    In \cref{alg:exp} a simple example from the algorithm2e documentation is given.
+
+    \begin{algorithm}[H]
+        \SetAlgoLined
+        \KwData{this text}
+        \KwResult{how to write algorithm with \LaTeX2e }
+        initialization\;
+        \While{not at end of this document}{
+            read current\;
+            \eIf{understand}{
+                go to next section\;
+                current section becomes this one\;
+            }{
+                go back to the beginning of current section\;
+            }
+        }
+        \caption{How to write algorithms (Small example from the algorithm2e documentation)}
+        \label{alg:exp}
+    \end{algorithm}
+    \FloatBarrier
+
+    \section{Compiling The Document}
+    \LaTeX{}  is  a bit  archaic  to  work  with,  since with  every  pass 
+    through  your document,  some intermediate  information is  written to 
+    files,  which are  then processed  by  other programs.   Keep in  mind 
+    that  everytime a  new  pass through  your  document incorporates  new 
+    information (e.g. from BibTeX), page breaks may change, which requires
+    an  additional pass  through the  document. Thus, you  usually have  to
+    compile the document in three steps:
+    \begin{enumerate}
+        \item Compile the document using xelatex: xelatex thesis
+        \item Run biber  (or if  you do  not have  it, bibtex)  to set  up
+              bibliography: biber thesis
+        \item Run xelatex  twice more to incorporate  bibtex references and
+              to get the typesetting right.
+    \end{enumerate}
+
+    If you know what you're doing you can get away with less.
+
+    \backmatter
+
+    \begin{singlespacing}
+        \printbibliography
+    \end{singlespacing}
+    \FloatBarrier
+
+\end{document}
+
