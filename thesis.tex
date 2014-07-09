@@ -173,11 +173,11 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     the reader and  you, who are going through the  text together.  It gets
     you closer to your audience.
 
-    \section{Quotes, and Emphasis}
-    Note that double  "quotes" are not typeset  correctly.  English quotes 
-    should look like ``this'', while  German quotes are typeset like \glqq 
-    this\grqq.   Note the  difference.   Some editors  insert the  correct 
-    quotes automatically for you.                                          
+    \section{Quotes and Emphasis}
+    Note that double "quotes" on  your keyboard are not typeset correctly. 
+    English  quotes should  look like  ``this'', while  German quotes  are 
+    typeset  like \glqq this\grqq.   Note the  difference.  Some  editors 
+    insert the correct quotes automatically for you.                       
 
     Use  emphasis  sparingly.  It  clutters  the  text.  In  general,  use 
     \emph{italics}, which is the one standing out the least.  In captions, 
@@ -198,40 +198,36 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
 
     \chapter{Comments on Writing in LaTeX}
 
-    Lots of people complain about \LaTeX{} standard margins.  Typographers 
-    say: You shouldn't have  more than about 70 characters  per line (when 
-    using single  spacing).  Otherwise your  eyes have trouble  jumping to 
-    the  beginning  of the  next  line.   This  limits your  column  width 
-    severely, unless you  use a big font.  A thin  column width results in 
-    large margins.  This is (aside  from portability) the reason why books 
-    are smaller than A4 paper.
+    \section{\LaTeX{}'s Wide Margins}
 
-    If you want to toy  with margins nevertheless, consider this: When you 
-    open  your  double-sided  printed  thesis, the  white  region  in  the 
-    left/right  and  center  region  should have  equal  widths.   Outside 
-    margins are larger than the margin inside.  Consequentially, on a left 
-    page, left  margins are larger  than right (i.e. center)  margins, and 
-    on  a  right page,  right  margins  are  larger  than the  left  (i.e. 
-    center) ones. The  margin on the bottom  should be larger than  on the 
-    top.  These  rules are  automatically used  by the  KomaScript classes 
-    (scrartcl, scrbook, scrrprt).  Do not meddle with them.
+    Many students  complain  about  large  \LaTeX{}  standard  margins. 
+    Typographers have a  rule, though: You shouldn't have  more than about 
+    70 characters  per line (when  using single spacing).   Otherwise your 
+    eyes have  trouble jumping to  the beginning  of the next  line.  This 
+    limits  your column  width severely,  unless you  use a  big font.   A 
+    thin  column width  results in  large  margins.  This  is (aside  from 
+    portability) the reason  why books are smaller than A4  paper, and why 
+    newspapers have multiple thin columns.                                 
+
+    If  you want  to toy  with margins  nevertheless, consider  this: When 
+    you  open  your  double-sided  printed thesis,  the  white  region  in 
+    the  left/right  and  center  region should  have  equal  widths.   It 
+    follows  that outside  margins  are larger  than  the margins  inside. 
+    Consequentially, on  a left page,  left margins are larger  than right 
+    (i.e.\ center) margins, and on a  right page, right margins are larger 
+    than the left (i.e.\ center) ones. The  margin on the bottom should be 
+    larger than  on the top.   These rules  are automatically used  by the 
+    KomaScript classes  (scrartcl, scrbook, scrrprt).  Do  not meddle with 
+    them.                                                                  
     
     To   meddle  with   the   margins,   use  the   DIV   option  of   the 
     \verb+documentclass+  command.    Larger  values  result   in  smaller 
     margins.  If you  want to bind your thesis, make  sure to include some 
-    space for it using BCOR.  Ask the  print shop how much to use for your 
-    specific binding needs.  Never, ever, use the \verb+geometry+ package. 
+    space for  it using BCOR\@.   Ask the print shop  how much to  use for 
+    your  specific binding  needs.  Never,  ever, use  the \verb+geometry+ 
+    package.                                                               
 
-    \section{Front, Main and Back Matters}
-
-    Titlepage, lists of figures, table  of contents page etc. are numbered 
-    in  roman letters.   The introduction  should start  with page  $1$ in 
-    arabic  numerals.   The document  class  \verb+scrbook+  does this  by 
-    default,  when \textbackslash  frontmatter, \textbackslash  mainmatter 
-    and \textbackslash backmatter are placed properly.                     
-
-
-    \section{Paragraphs}
+    \section{Paragraphs are Empty Lines}
     \label{sec:paras}
 
     Paragraphs are separated  by empty lines in the  \LaTeX{} code.  Never 
@@ -241,17 +237,18 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     be good  to insert page  breaks, figures, tables, algorithms,  and the 
     like.                                                                  
 
-    Many people find  the indentation of the first line  in paragraph odd. 
-    Again, look into a favorite book  or newspaper of yours and you'll see 
-    that this is used everywhere.  Note that it allows you on the top of a 
-    new page to  see whether the line  is the first of a  new paragraph or 
-    the continuation of an old paragraph. 
+    Many  people find  the  indentation  of the  first  line in  paragraph 
+    odd.  Look into  a favorite book or newspaper of  yours and you'll see 
+    that this way of introducing  new paragraphs is used everywhere.  Note 
+    that it  allows you---even on the  top of a new  page---to see whether 
+    the line is the first of a new paragraph or the continuation of an old 
+    paragraph.                                                             
 
-    \section{Math}
+    \section{Typesetting Math as Part of Your Text}
 
-    Formulas are part of  the text, try to use them  like other objects and
-    be sure to include punctuation to keep the text flowing.  For example,
-    the pythagorean theorem,
+    Formulas are part of the text, try  to use them like nouns and be sure 
+    to include  punctuation to  keep the text  flowing.  For  example, the 
+    pythagorean theorem,                                                   
     \begin{align}
         a^2 + b^2 = c^2,
     \end{align}
@@ -280,18 +277,19 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     letter~x.
 
         \item
-    Use  single-letter  names  for  variables   in  math  (this  is  not  a
-    programming language).   Function names  may have  multiple characters,
+    Use  single-letter  names  for  variables   in  math  (math  is  not  a
+    programming language!).   Function names  may have  multiple characters,
     such as $\tanh(x)$.  Note that they are not typeset in italics.  
     They  usually have  their own  commands, and  you can  define your  own
     functions, such as  $\somefunc(x)$.  If you don't do  this, the kerning
     will  be broken,  since \LaTeX{}  assumes that  you're multiplying  the
     variables  $s$, $o$,  $m$, $e$,  $f$, $u$,  $n$, and  $c$ and  typesets
-    accordingly.
+    accordingly,  compare  $somefunc$  (math  mode,  without  spaces!)  and
+    \emph{somefunc} (italics).
 
     \end{itemize}
 
-    \section{Referencing}
+    \section{Referencing Sections, Figures, etc.}
     Use  the \verb+cleverref+  package to  refer  to other  places in  the 
     document,  e.g.  \cref{chap:Introduction}.    The  package  allows  to 
     specify the reference style globally.  Therefore, it helps to refer in 
@@ -299,39 +297,6 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     referencing,   e.g.  \emph{Figure},   \emph{figure},  \emph{Fig.}   and
     \emph{fig.}.   The package  also ensures  that there  is no  linebreak 
     before the number of the figure/chapter etc.                           
-
-    \section{Citations}
-    There are two ways to cite, which depends on whether the authors are an
-    active part of your sentence:
-    \begin{itemize}
-        \item \citet{muster} showed that ...
-        \item This is currently a hot research topic \citep{muster}
-    \end{itemize}
-    This distinction  is even more important  when you use a  numeric style
-    for referencing.
-
-    In  your bibliography,  you should  define common  strings, using  the 
-    \verb|@string| syntax.  Otherwise you might  quickly end up with a lot 
-    of different  names for  the same conference,  which is  confusing and 
-    inconsistent.  (Please have a look at the bibliography file.)          
-
-    \section{Enumerations}
-
-    Short enumerations look ugly in  standard \LaTeX{}, since they include 
-    too much  space between the  items.  A ``normal'' enumerate  list with 
-    very short paragraphs:                                                 
-    \begin{enumerate}
-        \item foo bar baz
-        \item foo bar baz
-        \item foo bar baz
-    \end{enumerate}
-
-    A list using enumitem to compress the inter item spaces, looks much better for short items:
-    \begin{enumerate}[noitemsep]
-        \item foo bar baz
-        \item foo bar baz
-        \item foo bar baz
-    \end{enumerate}
 
     \begin{figure}
         \centering
@@ -358,7 +323,27 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     \end{figure}
 
 
-    \section{Figures}
+
+    \section{Citing Other Works}
+    There are two ways to cite, which depends on whether the authors are an
+    active part of your sentence:
+    \begin{itemize}[noitemsep]
+        \item \citet{muster} showed that\ldots{}
+        \item This is currently a hot research topic \citep{muster}
+    \end{itemize}
+    This distinction  is even more important  when you use a  numeric style
+    for referencing, where in the second version only the number of the 
+    reference is printed.   In the first case, a  number-only citation does
+    not make much sense.
+
+    In  your  bibliography, you  should  define  common strings,  such  as 
+    conference  names, using  the  \verb|@string|  syntax.  Otherwise  you 
+    might  quickly end  up with  a  lot of  different names  for the  same 
+    conference, which is confusing and  inconsistent.  (Please have a look 
+    at the bibliography file.)                                             
+
+    \section{Floats}
+    \subsection{Figures}
     You should  allow \LaTeX{} to place  the figures where it  wants.  The 
     same  goes  for  tables.   This  is  called  a  \verb+float+,  as  the 
     figure/table floats around.   Look in a well-typeset  book, and you'll 
@@ -384,10 +369,11 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
 
 
 
-    \section{Tables}
+    \subsection{Tables}
     Never  use vertical  lines in  tables.  See  the documentation  of the 
-    booktabs package for an explanation,  or look in a favorite scientific 
-    book/magazine to understand that this is a commonplace rule.
+    booktabs  package  for  an  explanation,  or  look  in  your  favorite 
+    scientific  book/magazine to  understand  that this  is a  commonplace 
+    rule.                                                                  
 
     A basic  example, taken  from the booktabs  documentation, is  given in
     \cref{tab::ex}.
@@ -408,11 +394,11 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
         \label{tab::ex}
     \end{table}
 
-    \subsection{The tabu package}
+    \paragraph{The tabu package}
     The tabu package provides some useful tools for advanced tables.
 
 
-    \section{Algorithms}
+    \subsection{Algorithms}
     There are several packages to typeset algorithms.
     We recommend the \verb+algorithm2e+ package.
     In \cref{alg:exp} a simple example from the algorithm2e documentation is given.
@@ -435,6 +421,36 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
         \label{alg:exp}
     \end{algorithm}
 
+    \section{Miscellaneous}
+
+    \subsection{Enumerations}
+
+    Short enumerations look ugly in  standard \LaTeX{}, since they include 
+    too much  space between the  items.  A ``normal'' enumerate  list with 
+    very short paragraphs:                                                 
+    \begin{enumerate}
+        \item foo bar baz
+        \item foo bar baz
+        \item foo bar baz
+    \end{enumerate}
+
+    A list using enumitem to compress the inter item spaces, looks much better for short items:
+    \begin{enumerate}[noitemsep]
+        \item foo bar baz
+        \item foo bar baz
+        \item foo bar baz
+    \end{enumerate}
+
+    \subsection{Front, Main and Back Matters}
+
+    Titlepage, lists of figures, table of contents page etc.\ are numbered 
+    in  roman letters.   The introduction  should start  with page  $1$ in 
+    arabic  numerals.   The document  class  \verb+scrbook+  does this  by 
+    default,  when \textbackslash  frontmatter, \textbackslash  mainmatter 
+    and \textbackslash backmatter are placed properly.                     
+
+
+
     \section{Compiling The Document}
     \LaTeX{}  is  a bit  archaic  to  work  with,  since with  every  pass 
     through  your document,  some intermediate  information is  written to 
@@ -455,6 +471,7 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     programs parse the  output of \LaTeX{} to  determine whether additional
     passes are necessary.  Most GUI programs fall in this category, as do
     \verb+rubber+ and \verb+latexmk+.
+
 
     \backmatter
 
