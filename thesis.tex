@@ -331,6 +331,9 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
         \item \citet{muster} showed that\ldots{}
         \item This is currently a hot research topic \citep{muster}
     \end{itemize}
+    In  \LaTeX{}, these  different  citation styles  are  reflected in  the
+    \texttt{\textbackslash citet}  and  \texttt{\textbackslash citep}  commands. \textbf{Never  use  the  plain
+    \texttt{\textbackslash cite}!} -- it is outdated.
     This distinction  is even more important  when you use a  numeric style
     for referencing, where in the second version only the number of the 
     reference is printed.   In the first case, a  number-only citation does
@@ -351,7 +354,7 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     always  on the  top  of  the page  if  at  all possible. \LaTeX{}  has 
     options to  let figures float to  \emph{top} (\verb+t+), \emph{bottom} 
     (\verb+b+),   \emph{page  of   floats}   (\verb+p+)  and   \emph{here} 
-    (\verb+h+).  The  default is \verb+tbp+ is  ok for most cases,  in any 
+    (\verb+h+).  The  default, \verb+tbp+, is  ok for most users,  in any 
     case, never use \verb+h+.  You can use the FloatBarrier command if you 
     want to make sure that a figure is within a specific section.          
 
@@ -471,6 +474,15 @@ BCOR=8mm]{scrbook} % BCOR sets the space, used by the type of  book. (e.g. glued
     programs parse the  output of \LaTeX{} to  determine whether additional
     passes are necessary.  Most GUI programs fall in this category, as do
     \verb+rubber+ and \verb+latexmk+.
+
+    \subsection{Issues With This Template}
+    \begin{description}
+        \item [My references can't be found] 
+            The line including the \texttt{biblatex} package says it should
+            use \texttt{biber} as a backend.  This is a reimplementation of
+            BibTeX. If you do not have \texttt{biber}, or your IDE does not
+            support it, consider switching the backend to \texttt{bibtex}.
+    \end{description}
 
 
     \backmatter
